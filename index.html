@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>My photo album</title>
-    <link rel="stylesheet" href="styles/bootswatch.min.css">
+    <link rel="stylesheet" href="styles/vendors/bootswatch.min.css">
     <link rel="stylesheet" href="styles/home.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
                 <h1>My photo album</h1>
             </div>
         </div>
-        <div class="row">
+        <div class="row photo-list">
             <div class="col-sm-6 col-md-3">
                 <div class="thumbnail">
                     <img src="https://placekitten.com/320/320" alt="kitten">
@@ -27,5 +27,12 @@
             </div>
         </div>
     </div>
+    <!-- vendors -->
+    <script type="text/javascript" src="js/vendors/underscore.min.js"></script>
+    <!-- scripts -->
+    <script type="text/javascript" src="js/data.js"></script>
+    <script type="text/javascript" src="js/views.js"></script>
+    <script type="text/javascript" src="js/home.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>
