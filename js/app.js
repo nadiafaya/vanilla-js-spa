@@ -1,7 +1,7 @@
 var app = (function() {
 	return {
-		init: home.init
+		init: function() {
+			app.home.init();
+		}
 	};
 })();
-
-app.init();

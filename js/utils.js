@@ -1,4 +1,6 @@
-var utils = (function() {
+var app = app || {};
+
+app.utils = (function() {
 	return {
 		// Usage:
 		// alert("I'm {age} years old!".supplant({ age: 29 }));

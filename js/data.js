@@ -1,4 +1,6 @@
-var data = (function() {
+var app = app || {};
+
+app.data = (function() {
 	return {
 		getPhotoList: function() {
 			return [

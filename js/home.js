@@ -1,10 +1,12 @@
-var home = (function() {
+var app = app || {};
+
+app.home = (function() {
 
 	var photoListElement = document.querySelector('.photo-list');
 
 	var renderPhotoList = function() {
 		clearPhotoList();
-		photoList = data.getPhotoList();
+		photoList = app.data.getPhotoList();
 		photoList.forEach(renderPhotoItem);
 	};
 
@@ -13,7 +15,7 @@ var home = (function() {
 	};
 
 	var renderPhotoItem = function(photoItem) {
-		var photoItemView = views.getPhotoItemView(photoItem);
+		var photoItemView = app.views.getPhotoItemView(photoItem);
 		photoListElement.appendChild(photoItemView);
 	};
 
