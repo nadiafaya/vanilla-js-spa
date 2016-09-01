@@ -3,6 +3,7 @@ var app = app || {};
 app.home = (function() {
 
 	var photoListElement = document.querySelector('.photo-list');
+	var photoCountElement = document.querySelector('.photo-count');
 
 	var renderPhotoList = function() {
 		clearPhotoList();
@@ -19,9 +20,15 @@ app.home = (function() {
 		photoListElement.appendChild(photoItemView);
 	};
 
+	var updatePhotoCount = function() {
+		photoList = app.data.getPhotoList();
+		photoCountElement.innerText = photoList.length;
+	};
+
 	return {
 		init: function() {
 			renderPhotoList();
+			updatePhotoCount();
 		}
 	};
 })();
