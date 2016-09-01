@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My photo album</title>
     <link rel="stylesheet" href="styles/vendors/bootswatch.min.css">
     <link rel="stylesheet" href="styles/home.css">
@@ -17,20 +20,7 @@
                 <p class="lead">Count: <span class="photo-count"></span></p>
             </div>
         </div>
-        <div class="row photo-list">
-            <div class="col-sm-6 col-md-3">
-                <div class="thumbnail">
-                    <img src="https://placekitten.com/320/320" alt="kitten">
-                    <div class="caption">
-                        <p>This is a very interesting description</p>
-                        <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                            <a href="#" class="btn btn-xs btn-primary" role="button">Edit</a>
-                            <a href="#" class="btn btn-xs btn-danger" role="button">Delete</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="row photo-list"></div>
     </div>
     <!-- templates -->
     <template id="photoItemView">
