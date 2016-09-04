@@ -1,0 +1,28 @@
+/* all site */
+@media only screen and (max-width : 480px) {
+	
+	.navbar .navbar-collapse .btn .btn-caption {
+		display: none;
+	}
+}
+
+.page {
+	display: none;
+}
+
+/* home */
+
+.thumbnail .caption {
+	max-width: 325px;
+	margin: 0 auto;
+}
+
+/* add-photo */
+form .actions {
+	text-align: center;
+	margin-top: 50px;
+}
+
+form .actions .btn {
+	/*margin: 0 5%;*/
+}

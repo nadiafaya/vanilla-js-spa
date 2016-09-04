@@ -2,10 +2,11 @@ var app = app || {};
 
 app.navigation = (function() {
 	var pages = {};
-	var currentPage = {};
+	var currentPageId = '';
 
 	var init = function() {
 		pages = getPages();
+		initNavLinks();
 		showPage('home');
 	};
 
@@ -19,23 +20,38 @@ app.navigation = (function() {
 		return allPages;
 	};
 
+	var initNavLinks = function() {
+		var navLinks = document.querySelectorAll('[nav-link]');
+		navLinks.forEach(function(navLink){
+			navLink.addEventListener('click', navLinkClicked);
+		});
+	};
+
+	var navLinkClicked = function(e) {
+		var navToPageId = e.currentTarget.getAttribute('nav-link');
+		app.navigation.goTo(navToPageId);
+	};
+
 	var hidePage = function(pageId) {
-		currentPage = null;
+		currentPageId = '';
 		pages[pageId].style.display = 'none';
 	};
 
 	var showPage = function(pageId) {
-		currentPage = pages[pageId];
-		currentPage.style.display = 'block';
+		currentPageId = pageId;
+		pages[currentPageId].style.display = 'block';
 	};
 
 	init();
 
 	return {
 		goTo: function(pageId) {
-			// hide current page
-
-			// show page
+			if (pageId) {
+				// hide current page
+				hidePage(currentPageId);
+				// show page
+				showPage(pageId);
+			}
 		}
 	};
 })();
