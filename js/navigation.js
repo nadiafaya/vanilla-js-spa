@@ -13,7 +13,7 @@ app.navigation = (function() {
 	var getPages = function() {
 		var allPages = {};
 		var allPageElements = document.querySelectorAll('[page-id]');
-		allPageElements.forEach(function(pageElement) {
+		app.utils.array.forEach(allPageElements, function(pageElement) {
 			var pageId = pageElement.getAttribute('page-id');
 			allPages[pageId] = pageElement;
 		});
@@ -22,8 +22,8 @@ app.navigation = (function() {
 
 	var initNavLinks = function() {
 		var navLinks = document.querySelectorAll('[nav-link]');
-		navLinks.forEach(function(navLink){
-			navLink.addEventListener('click', navLinkClicked);
+		app.utils.array.forEach(navLinks, function(navLink){
+			app.utils.element.addEventListener(navLink, 'click', navLinkClicked);
 		});
 	};
 

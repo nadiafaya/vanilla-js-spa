@@ -8,7 +8,7 @@ app.home = (function() {
 	var renderPhotoList = function() {
 		clearPhotoList();
 		photoList = app.data.getPhotoList();
-		photoList.forEach(renderPhotoItem);
+		app.utils.array.forEach(photoList, renderPhotoItem);
 	};
 
 	var clearPhotoList = function() {
@@ -25,10 +25,15 @@ app.home = (function() {
 		photoCountElement.innerText = photoList.length;
 	};
 
+	var updateView = function() {
+		renderPhotoList();
+		updatePhotoCount();
+	};
+
 	return {
 		init: function() {
-			renderPhotoList();
-			updatePhotoCount();
+			updateView();
+			app.data.onPhotoListChange(updateView);
 		}
 	};
 })();
