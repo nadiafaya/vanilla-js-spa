@@ -3,29 +3,40 @@ var app = app || {};
 (function() {
 
 	var invalidFields = [];
-	var form = document.querySelector('[page-id="add-photo"] form');
+	var form = document.querySelector('[page-id="photo-form"] form');
 	var formFields = {
 		file: form.querySelector('#file'),
 		description: form.querySelector('#description')
 	};
 
-	app.utils.element.addEventListener(form, 'submit', function(event) {
+	var init = function() {
+		app.utils.element.addEventListener(form, 'submit', onSubmit);
+		app.navigation.onPageChange('photo-form', pageChanged);
+	};
+
+	var onSubmit = function(event) {
 		event.preventDefault();
 
 		if (formIsValid()) {
-			addPhoto();
+			savePhoto();
 		} else {
 			showErrors();
 		}
-	});
+	};
+
+	var pageChanged = function(pageId, pageParams) {
+		if (pageParams) {
+			setPhotoItem(pageParams);
+		}
+	};
 
 	var formIsValid = function() {
 		invalidFields = form.querySelectorAll('.form-control:invalid');
 		return !invalidFields.length;
 	};
 
-	var addPhoto = function() {
-		app.data.addPhotoItem(getPhotoItem());
+	var savePhoto = function() {
+		app.data.savePhotoItem(getPhotoItem());
 		app.navigation.goTo('home');
 		clearForm();
 	};
@@ -44,10 +55,17 @@ var app = app || {};
 		};
 	};
 
+	var setPhotoItem = function(photoItem) {
+		formFields.file.value = photoItem.photoURL || "";
+		formFields.description.value = photoItem.description || "";
+	};
+
 	var clearForm = function() {
 		for (var field in formFields){
 			formFields[field].value = '';
 		}
 	};
+
+	init();
 
 })();

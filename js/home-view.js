@@ -1,6 +1,6 @@
 var app = app || {};
 
-app.home = (function() {
+app.homeView = (function() {
 
 	var photoListElement = document.querySelector('.photo-list');
 	var photoCountElement = document.querySelector('.photo-count');
@@ -18,6 +18,7 @@ app.home = (function() {
 	var renderPhotoItem = function(photoItem) {
 		var photoItemView = app.views.getPhotoItemView(photoItem);
 		photoListElement.appendChild(photoItemView);
+		app.navigation.initNavLinks(photoItemView);
 	};
 
 	var updatePhotoCount = function() {

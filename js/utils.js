@@ -3,13 +3,21 @@ var app = app || {};
 app.utils = (function() {
 	return {
 		// Usage:
-		// alert("I'm {age} years old!".supplant({ age: 29 }));
-		// alert("The {a} says {n}, {n}, {n}!".supplant({ a: 'cow', n: 'moo' }));
+		// interpolate("I'm #age# years old!", { age: 29 });
+		// interpolate("The #a# says #n#, #n#, #n#!", { a: 'cow', n: 'moo' });
 		interpolate: function (string, object) {
-    		return string.replace(/{([^{}]*)}/g, function (match, key) {
+    		return string.replace(/#([^#]*)#/g, function (match, key) {
             	var result = object[key];
             	return typeof result === 'string' || typeof result === 'number' ? result : match;
         	});
+		},
+
+		convertCamelToDash: function(string) {
+			return string.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+		},
+
+		toJSON: function(string) {
+			return string ? JSON.parse(string) : undefined;
 		},
 
 		element: {
@@ -37,6 +45,23 @@ app.utils = (function() {
 					element.addEventListener(event, listener);
 				} else if (element.attachEvent) {
 					element.attachEvent('on' + event, listener);
+				}
+			},
+			getData: function(element, key) {
+				var value;
+				if (element.dataset) {
+					value = element.dataset[key];
+				} else {
+					value = element.getAttribute('data-' + app.utils.convertCamelToDash(key));
+				}
+				return app.utils.toJSON(value);
+			},
+			setData: function(element, key, value) {
+				value = JSON.stringify(value);
+				if (element.dataset) {
+					element.dataset[key] = value;
+				} else {
+					return element.setAttribute('data-' + app.utils.convertCamelToDash(key), value);
 				}
 			}
 		},

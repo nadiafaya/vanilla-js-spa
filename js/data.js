@@ -25,7 +25,7 @@ app.data = (function() {
 		getPhotoList: function() {
 			return photoList;
 		},
-		addPhotoItem: function(photoItem) {
+		savePhotoItem: function(photoItem) {
 			photoList.push(photoItem);
 			notifyPhotoListChanged();
 		},

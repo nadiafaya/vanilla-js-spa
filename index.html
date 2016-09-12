@@ -14,10 +14,10 @@
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header pull-left">
-                        <a class="navbar-brand" href="#" nav-link="home">My photo album</a>
+                        <a class="navbar-brand" href="javascript:void(0)" nav-link="home">My photo album</a>
                     </div>
                     <div class="navbar-collapse">
-                        <button type="button" class="btn btn-default navbar-btn pull-right" nav-link="add-photo">
+                        <button type="button" class="btn btn-default navbar-btn pull-right" nav-link="photo-form" nav-link-param="{}">
                             <span class="glyphicon glyphicon-plus"></span> <span class="btn-caption">Add photo</span>
                         </button>
                     </div>
@@ -41,7 +41,7 @@
                 <div class="row photo-list"></div>                
             </div>
         </div>
-        <div class="row page" page-id="add-photo">
+        <div class="row page" page-id="photo-form">
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-12">
@@ -87,12 +87,12 @@
     <template id="photoItemView">
         <div class="col-sm-6 col-md-3">
             <div class="thumbnail">
-                <img src="{photoURL}">
+                <img src="#photoURL#">
                 <div class="caption">
-                    <p>{description}</p>
+                    <p>#description#</p>
                     <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                        <a href="#" class="btn btn-xs btn-primary" role="button">Edit</a>
-                        <a href="#" class="btn btn-xs btn-danger" role="button">Delete</a>
+                        <a href="javascript:void(0)" class="btn btn-xs btn-primary" role="button" nav-link="photo-form" nav-link-param='{ "photoURL": "#photoURL#", "description": "#description#" }'>Edit</a>
+                        <a href="javascript:void(0)" class="btn btn-xs btn-danger" role="button">Delete</a>
                     </div>
                 </div>
             </div>
@@ -104,8 +104,8 @@
     <script type="text/javascript" src="js/data.js"></script>
     <script type="text/javascript" src="js/navigation.js"></script>
     <script type="text/javascript" src="js/views.js"></script>
-    <script type="text/javascript" src="js/home.js"></script>
-    <script type="text/javascript" src="js/add-photo-view.js"></script>
+    <script type="text/javascript" src="js/home-view.js"></script>
+    <script type="text/javascript" src="js/photo-form-view.js"></script>
     <script type="text/javascript">
         app.init();
     </script>
